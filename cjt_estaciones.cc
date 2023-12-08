@@ -61,7 +61,7 @@ void cjt_estaciones::transforma_arbol(const BinTree<string>& b, const string& to
     if (not b.empty())
     {
         if (b.value() == top)
-            f = BinTree<string>(b.value(), b.left(), b.right());
+            f = b;
         else
         {
             transforma_arbol(b.left(), top, f);
@@ -80,7 +80,7 @@ double cjt_estaciones::plazas_vacias(const BinTree<string>& b, double& n) const{
     }
     return x;
 }
-/*
+
 Estacion cjt_estaciones::coef_des(const BinTree<string>& b, double &n) const
 {
     Estacion f(0, "NP");
@@ -105,7 +105,7 @@ Estacion cjt_estaciones::coef_des(const BinTree<string>& b, double &n) const
     }
 
     return f;
-}*/
+}
 
 void cjt_estaciones::modifica_capacidad_total(int num){
    capacidad_total += num;
