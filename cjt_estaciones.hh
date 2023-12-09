@@ -38,12 +38,6 @@ private:
      * \post devuelve el BinTree correspondiente
      */
     BinTree<string> leer_arbol(int& capacidad);
-
-    /** @brief trasforma f a la misma estructura que b pero con inicio en top
-     * \pre top es el valor de un nodo de b
-     * \post f es un BinTree con la misma estructura que b pero con inicio en top
-    */
-    static void transforma_arbol(const BinTree<string>& b, const string& top, BinTree<string>& f);
    
 public:
     // Constructores
@@ -71,10 +65,10 @@ public:
 
     /** @brief devuelve la estacion con el coeficiente de desocupacion mayor
      * \pre n = 0
-     * \post devuelve la estacion con coeficiente de desocupacion mayor, en caso que haya dos con el mismo devuelve la estacion
-     * con el id menor. Deja en n dicho coeficiente
+     * \post calcula la estacion con coeficiente de desocupacion mayor, en caso que haya dos con el mismo devuelve la estacion
+     * con el id menor. Deja en n dicho coeficiente. Deja dicha estacion en r
     */
-    Estacion coef_des(const BinTree<string>& b, double& n) const;
+    void coef_des(const BinTree<string>& b, double& n, Estacion& r) const;
 
     /** @brief devuelve el arbol del parametro implicito
      * \pre p.i. inicializado

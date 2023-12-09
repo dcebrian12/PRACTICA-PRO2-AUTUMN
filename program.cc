@@ -171,7 +171,8 @@ int main()
             else if (e.plazas_libres() == 0) cout << "error: no hay plazas libres" << endl;
             else {
                 double n = 0;
-                Estacion auxe = e.coef_des(e.consultar_arbol(), n);
+                Estacion auxe(0, "np");
+                e.coef_des(e.consultar_arbol(), n, auxe);
                 cout << auxe.identificador_estacion() << endl;
                 b.alta_bici(id_bici, auxe.identificador_estacion());
                 auxe.afegir_bici(id_bici); 

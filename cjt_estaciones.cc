@@ -56,20 +56,6 @@ BinTree<string> cjt_estaciones::consultar_arbol() const
 }
 
 
-void cjt_estaciones::transforma_arbol(const BinTree<string>& b, const string& top, BinTree<string>& f)
-{
-    if (not b.empty())
-    {
-        if (b.value() == top)
-            f = b;
-        else
-        {
-            transforma_arbol(b.left(), top, f);
-            transforma_arbol(b.right(), top, f);
-        }
-    }
-}
-
 double cjt_estaciones::plazas_vacias(const BinTree<string>& b, double& n) const{
     double x;
     if (b.empty()) x = 0;
@@ -81,32 +67,30 @@ double cjt_estaciones::plazas_vacias(const BinTree<string>& b, double& n) const{
     return x;
 }
 
-Estacion cjt_estaciones::coef_des(const BinTree<string>& b, double &n) const
+void cjt_estaciones::modifica_capacidad_total(int num){
+   capacidad_total += num;
+}
+
+
+
+void cjt_estaciones::coef_des(const BinTree<string>& b, double &n, Estacion& r) const
 {
-    Estacion f(0, "NP");
-    map<string, Estacion>::const_iterator it = conj_estaciones.begin();
-    BinTree<string> a = BinTree<string>();
-    for (; it != conj_estaciones.end(); ++it){
-        string aux = it->first;
-        transforma_arbol(b, aux, a);
+    if (not b.empty()){
         double num = 0;
-        double c = plazas_vacias(a, num);
+        double c = plazas_vacias(b, num);
         c = num/c;
         if (c > n) {
             n = c;
-            f = it->second;
+            r = consulta_estacion(b.value());
         }
         else if (c == n){
-            if (it->first < f.identificador_estacion()) {
+            if (b.value() < r.identificador_estacion()) {
                 n = c;
-                f = it->second;
+                r = consulta_estacion(b.value());
             }
         }
+
+        if (not b.left().empty()) coef_des(b.left(), n, r);
+        if (not b.right().empty()) coef_des(b.right(), n, r);
     }
-
-    return f;
-}
-
-void cjt_estaciones::modifica_capacidad_total(int num){
-   capacidad_total += num;
 }
