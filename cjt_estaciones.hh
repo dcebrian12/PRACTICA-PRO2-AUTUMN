@@ -68,7 +68,7 @@ public:
      * \post calcula la estacion con coeficiente de desocupacion mayor, en caso que haya dos con el mismo devuelve la estacion
      * con el id menor. Deja en n dicho coeficiente. Deja dicha estacion en r
     */
-    void coef_des(const BinTree<string>& b, double& n, Estacion& r) const;
+    void coef_des(const BinTree<string> &b,double &c, Estacion &r);
 
     /** @brief devuelve el arbol del parametro implicito
      * \pre p.i. inicializado

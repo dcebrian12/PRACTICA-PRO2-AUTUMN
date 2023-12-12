@@ -7,6 +7,7 @@ Estacion::Estacion(int max, const string id)
     id_estacion = id;
     max_bicis = max;
     bicis_estacion = set<string>();
+    plazas_nodos = make_pair(0, 0);
 }
 
 bool Estacion::estacion_llena() const
@@ -58,4 +59,13 @@ string Estacion::idbici_menor() const{
 
 bool Estacion::estacion_vacia() const{
     return bicis_estacion.size() == 0;
+}
+
+void Estacion::modifica_nodos_plazas(const int n, const double p){
+    plazas_nodos.first = n;
+    plazas_nodos.second = p;
+}
+
+pair<int, double> Estacion::consultar_nodos_plazas() const{
+    return plazas_nodos;
 }

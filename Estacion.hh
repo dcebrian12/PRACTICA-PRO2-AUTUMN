@@ -20,6 +20,7 @@ private:
     string id_estacion;
     int max_bicis;                
     set<string> bicis_estacion;
+    pair<int, double> plazas_nodos;
 
 public:
     // Constructores
@@ -48,6 +49,8 @@ public:
         \post la bicicleta no es encuentra en el parametro implicito
     */
     void borrar_bici(const string& id_bici);
+
+    void modifica_nodos_plazas(const int n, const double p);
 
     // Consultores
 
@@ -86,6 +89,8 @@ public:
         \post Devuelve el maximo de bicicletas del parametro implicito
     */
     int max_estacion() const;
+
+    pair<int, double> consultar_nodos_plazas() const;
 
     // Lectura y escritura
 

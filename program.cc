@@ -170,8 +170,8 @@ int main()
             if (b.existe_bici(id_bici)) cout << "error: la bici ya existe" << endl;
             else if (e.plazas_libres() == 0) cout << "error: no hay plazas libres" << endl;
             else {
-                double n = 0;
                 Estacion auxe(0, "np");
+                double n = -1;
                 e.coef_des(e.consultar_arbol(), n, auxe);
                 cout << auxe.identificador_estacion() << endl;
                 b.alta_bici(id_bici, auxe.identificador_estacion());
